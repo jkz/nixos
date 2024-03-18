@@ -43,7 +43,7 @@ in
     programs.bash = {
       enable = true;
       shellAliases = {
-        conf = "sudo vim /etc/nixos/configuration.nix";
+        conf = "sudo vim /etc/configuration.nix";
         switch = "sudo nixos-rebuild switch";
       };
     };
