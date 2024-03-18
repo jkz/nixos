@@ -21,7 +21,7 @@ in
     enable = true;
     defaultUser = "jkz";
   };
-  
+
   environment.variables = {
     EDITOR = "vim";
   };
@@ -54,6 +54,10 @@ in
       userEmail = "j.k.zwaan@gmail.com";
       extraConfig = {
         push = { autoSetupRemote = true; };
+      };
+      aliases = {
+        pfl = "push --force-with-lease";
+        amend = "commit --amend";
       };
     };
 
