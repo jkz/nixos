@@ -44,7 +44,7 @@ in
       enable = true;
       shellAliases = {
         conf = "sudo vim /etc/configuration.nix";
-        switch = "sudo nixos-rebuild switch";
+        osre = "sudo nixos-rebuild switch";
       };
     };
 
@@ -57,7 +57,7 @@ in
       };
       aliases = {
         pfl = "push --force-with-lease";
-        amend = "commit --amend";
+        amend = "commit --amend --no-edit";
       };
     };
 
