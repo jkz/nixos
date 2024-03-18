@@ -26,6 +26,10 @@ in
     EDITOR = "vim";
   };
 
+  environment.systemPackages = with pkgs; [
+    comma
+  ];
+
   nix.settings.experimental-features = "nix-command flakes";
 
   home-manager.users.jkz = {
