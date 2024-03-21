@@ -5,16 +5,14 @@
 # NixOS-WSL specific options are documented on the NixOS-WSL repository:
 # https://github.com/nix-community/NixOS-WSL
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 let
-  home-manager = builtins.fetchTarball "https://github.com/nix-community/home-manager/archive/release-23.11.tar.gz";
   nixos-vscode-server = builtins.fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master";
 in
 {
   imports = [
     # include NixOS-WSL modules
     <nixos-wsl/modules>
-    (import "${home-manager}/nixos")
     (import "${nixos-vscode-server}/modules/vscode-server")
   ];
 
@@ -57,55 +55,6 @@ in
         ln -sf ${pkgs.nodejs_18}/bin/node $i/node
       done
     '';
-  };
-
-  home-manager.users.jkz = {
-    home.stateVersion = "23.11";
-
-    programs.vim = {
-      enable = true;
-      settings = {
-        expandtab = true;
-        shiftwidth = 2;
-        tabstop = 2;
-      };
-    };
-
-    programs.bash = {
-      enable = true;
-      shellAliases = {
-        conf = "sudo vim /etc/nixos/configuration.nix";
-        osre = "sudo nixos-rebuild switch --flake $(readlink -f /etc/nixos)#jkz --impure";
-      };
-    };
-
-    programs.git = {
-      enable = true;
-      userName = "jkz";
-      userEmail = "j.k.zwaan@gmail.com";
-      extraConfig = {
-        push = { autoSetupRemote = true; };
-      };
-      aliases = {
-        pfl = "push --force-with-lease";
-        amend = "commit --amend --no-edit";
-      };
-    };
-
-    programs.gh = {
-      enable = true;
-      gitCredentialHelper.enable = true;
-      settings = {
-        git_protocol = "ssh";
-        prompt = "enabled";
-      };
-    };
-
-    programs.direnv = {
-      enable = true;
-      enableBashIntegration = true;
-      nix-direnv.enable = true;
-    };
   };
 
   # This value determines the NixOS release from which the default
