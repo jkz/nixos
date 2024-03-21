@@ -28,6 +28,8 @@ in
 
   environment.systemPackages = with pkgs; [
     comma
+    nix-index
+    wget
   ];
 
   nix.settings.experimental-features = "nix-command flakes";
@@ -47,7 +49,7 @@ in
     programs.bash = {
       enable = true;
       shellAliases = {
-        conf = "sudo vim /etc/configuration.nix";
+        conf = "sudo vim /etc/nixos/configuration.nix";
         osre = "sudo nixos-rebuild switch";
       };
     };
@@ -72,6 +74,12 @@ in
         git_protocol = "ssh";
         prompt = "enabled";
       };
+    };
+
+    programs.direnv = {
+      enable = true;
+      enableBashIntegration = true;
+      nix-direnv.enable = true;
     };
   };
 
