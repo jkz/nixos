@@ -13,19 +13,19 @@
   };
 
   outputs = { nixpkgs, home-manager, ... } @ inputs: {
-    nixosConfigurations.jkz = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      modules = [
-        ./configuration.nix
-        # Pass input parameters to all submodules
-        { _module.args = { inherit inputs; }; }
-
-        home-manager.nixosModules.home-manager {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.jkz = import ./home.nix;
-        }
-      ];
+    nixosConfigurations = {
+      jakuzi = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./machines/jakuzi
+          home-manager.nixosModules.home-manager {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = inputs;
+            home-manager.users.jkz = import ./home;
+          }
+        ];
+      };
     };
   };
 }

@@ -10,6 +10,8 @@ let
   nixos-vscode-server = builtins.fetchTarball "https://github.com/msteen/nixos-vscode-server/tarball/master";
 in
 {
+  networking.hostName = "jakuzi";
+
   imports = [
     # include NixOS-WSL modules
     <nixos-wsl/modules>

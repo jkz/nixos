@@ -25,8 +25,8 @@
   programs.bash = {
     enable = true;
     shellAliases = {
-      conf = "sudo vim /etc/nixos/configuration.nix";
-      osre = "sudo nixos-rebuild switch --flake $(readlink -f /etc/nixos)#jkz --impure";
+      conf = "sudo vim /etc/nixos";
+      osre = "sudo nixos-rebuild switch --impure";
     };
   };
 
@@ -57,4 +57,7 @@
     enableBashIntegration = true;
     nix-direnv.enable = true;
   };
+
+  # Nicely reload system units when changing configs
+  systemd.user.startServices = "sd-switch";
 }
