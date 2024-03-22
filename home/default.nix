@@ -38,8 +38,9 @@
       push = { autoSetupRemote = true; };
     };
     aliases = {
-      pfl = "push --force-with-lease";
       amend = "commit --amend --no-edit";
+      pfl = "push --force-with-lease";
+      tree = "log --graph --oneline --all";
     };
   };
 

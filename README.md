@@ -10,7 +10,7 @@ Installation
 nix run nixpkgs#git -- clone https://github.com/jkz/nixos
 cd nixos
 
-# NOTE: This implies complete destruction of any existing configuration
+# WARNING: This implies complete destruction of any existing configuration
 sudo rm -rf /etc/nixos
 sudo ln -s $(pwd) /etc/nixos
 
