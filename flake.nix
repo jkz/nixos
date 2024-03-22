@@ -10,6 +10,11 @@
 
     nixos-wsl.url = "github:nix-community/nixos-wsl";
     nixos-wsl.inputs.nixpkgs.follows = "nixpkgs";
+
+    vscode-remote-wsl.url = "github:sonowz/vscode-remote-wsl-nixos/master";
+    vscode-remote-wsl.flake = false;
+
+    nixos-vscode-server.url = "github:msteen/nixos-vscode-server/master";
   };
 
   outputs = { nixpkgs, home-manager, ... } @ inputs: {
@@ -21,7 +26,7 @@
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = inputs;
+            home-manager.extraSpecialArgs = { flake-inputs = inputs; };
             home-manager.users.jkz = import ./home;
           }
         ];
