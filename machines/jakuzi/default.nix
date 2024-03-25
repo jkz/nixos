@@ -5,7 +5,6 @@
 
   imports = [
     ../common.nix
-    (import ../../home/vscode.nix).nixosModule
   ];
 
   wsl = {

@@ -1,9 +1,4 @@
-# This file contains a nixos module and a home config module
-# This is probably wrong, but it is a stepping stone in my understanding
-{
-  nixosModule = ({ flake-inputs, ... }: {
-  });
-  homeModule = ({ flake-inputs, ...}: {
+{ flake-inputs, ...}: {
     imports = [
       flake-inputs.nixos-vscode-server.homeModules.default
     ];
@@ -13,5 +8,4 @@
     services.vscode-server.enable = true; 
 
     home.file.".vscode-server/server-env-setup".source = "${flake-inputs.vscode-remote-wsl}/server-env-setup";
-  });
 }
