@@ -1,12 +1,17 @@
-{ flake-inputs, ... }:
+# This file contains a nixos module and a home config module
+# This is probably wrong, but it is a stepping stone in my understanding
 {
-  imports = [
-    flake-inputs.nixos-vscode-server.homeModules.default
-  ];
-  # services.vscode-server.enable = true;
+  nixosModule = ({ flake-inputs, ... }: {
+  });
+  homeModule = ({ flake-inputs, ...}: {
+    imports = [
+      flake-inputs.nixos-vscode-server.homeModules.default
+    ];
 
-  # TODO explain why we need nix-ld
-  # Following instructions from https://nixos.wiki/wiki/Visual_Studio_Code
+    # TODO explain why we need nix-ld
+    # Following instructions from https://nixos.wiki/wiki/Visual_Studio_Code
+    services.vscode-server.enable = true; 
 
-  home.file.".vscode-server/server-env-setup".source = "${flake-inputs.nixos-vscode-server}/server-env-setup";
+    home.file.".vscode-server/server-env-setup".source = "${flake-inputs.vscode-remote-wsl}/server-env-setup";
+  });
 }

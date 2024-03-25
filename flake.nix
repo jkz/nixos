@@ -14,16 +14,17 @@
     vscode-remote-wsl.url = "github:sonowz/vscode-remote-wsl-nixos";
     vscode-remote-wsl.flake = false;
 
-    nixos-vscode-server.url = "github:msteen/nixos-vscode-server";
+    nixos-vscode-server.url = "github:nix-community/nixos-vscode-server";
   };
 
-  outputs = { nixpkgs, home-manager, nixos-wsl, ... } @ inputs: {
+  outputs = { nixpkgs, home-manager, nixos-wsl, nixos-vscode-server, ... } @ inputs: {
     nixosConfigurations = {
       jakuzi = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
           ./machines/jakuzi
           nixos-wsl.nixosModules.wsl
+          nixos-vscode-server.nixosModules.default
           home-manager.nixosModules.home-manager {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

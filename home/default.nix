@@ -1,4 +1,7 @@
 { config, pkgs, ... }: {
+  imports = [
+    (import ./vscode.nix).homeModule
+  ];
   home.stateVersion = "23.11";
   home.packages = with pkgs; [
     zip

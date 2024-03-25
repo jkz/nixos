@@ -5,6 +5,7 @@
 
   imports = [
     ../common.nix
+    (import ../../home/vscode.nix).nixosModule
   ];
 
   wsl = {
@@ -15,9 +16,4 @@
   environment.variables = {
     EDITOR = "code";
   };
-
-  home-manager.sharedModules = [
-    ../../home
-    ../../home/vscode.nix
-  ];
 }
