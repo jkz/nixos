@@ -1,4 +1,4 @@
-{ flake-inputs, nixpkgs, ...}: {
+{ flake-inputs, ...}: {
   imports = [
     flake-inputs.nixos-vscode-server.homeModules.default
   ];

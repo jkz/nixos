@@ -1,4 +1,4 @@
-{ pkgs, flake-inputs, ... }:
+{ pkgs, ... }:
 
 {
   networking.hostName = "jakuzi";
