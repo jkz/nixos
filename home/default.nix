@@ -13,6 +13,8 @@
 
     which
     tree
+
+    lazygit
   ];
 
   programs.home-manager.enable = true;
