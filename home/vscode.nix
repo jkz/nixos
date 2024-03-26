@@ -14,7 +14,7 @@
     ".vscode-server/data/Machine/settings.json".source = ../dotfiles/vscode/settings.json;
   };
 
-  extensionsList = with flake-inputs.nix-vscode-extensions.extensions.${builtins.currentSystem}.vscode-marketplace; [
-    ms-python.python
-  ];
+  # extensionsList = with flake-inputs.nix-vscode-extensions.extensions.${builtins.currentSystem}.vscode-marketplace; [
+  #   ms-python.python
+  # ];
 }
