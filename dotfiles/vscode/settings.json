@@ -1,0 +1,10 @@
+{
+    "workbench.colorTheme": "Default Dark Modern",
+    "editor.minimap.enabled": false,
+    "vim.handleKeys": {
+        "<C-w>": false,
+        "<C-c>": false,
+        "<C-v>": false
+    },
+    "github.copilot.chat.terminalChatLocation": "quickChat"
+}
