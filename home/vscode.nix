@@ -7,6 +7,16 @@
   # Following instructions from https://nixos.wiki/wiki/Visual_Studio_Code
   services.vscode-server.enable = true; 
 
+  programs.vscode = {
+    enable = true;
+    extensions = with flake-inputs.nix-vscode-extensions.extensions.${builtins.currentSystem}.vscode-marketplace; [
+      ms-python.python
+      ms-vscode-remote.remote-wsl
+      # ms-vscode-remote.remote-ssh
+      # ms-vscode-remote.remote-ssh-edit
+    ];
+  };
+
   home.file = {
     # This is a slightly hacky fix to make a file available that vscode needs to connect remotely
     ".vscode-server/server-env-setup".source = "${flake-inputs.vscode-remote-wsl}/server-env-setup";

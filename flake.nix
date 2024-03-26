@@ -24,6 +24,13 @@
       jakuzi = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
+          ({nixpkgs, lib, ...}: {
+            nixpkgs.config.allowUnfreePredicate = pkg:
+              builtins.elem (lib.getName pkg) [
+                "vscode"
+              ];
+          })
+
           ./machines/jakuzi
           nixos-wsl.nixosModules.wsl
           nixos-vscode-server.nixosModules.default
