@@ -4,6 +4,8 @@
     comma
     nix-index
     wget
+
+    nil  # Nix language server
   ];
 
   nix.settings.experimental-features = [
