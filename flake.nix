@@ -15,6 +15,8 @@
     vscode-remote-wsl.flake = false;
 
     nixos-vscode-server.url = "github:nix-community/nixos-vscode-server";
+
+    nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
   };
 
   outputs = { nixpkgs, home-manager, nixos-wsl, nixos-vscode-server, ... } @ inputs: {
