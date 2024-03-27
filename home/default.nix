@@ -1,5 +1,6 @@
-{ pkgs, ... }: {
-  imports = [
+{ pkgs, jkz-lib, ... }:
+{
+  imports = jkz-lib.import-modules "@home" [
     ./vscode.nix
   ];
 
