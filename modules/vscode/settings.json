@@ -7,13 +7,19 @@
         "<C-v>": false
     },
     "github.copilot.chat.terminalChatLocation": "quickChat",
-
     "nix.enableLanguageServer": true,
-    "nix.serverPath": "nil"
-    // Uncomment these to tweak settings.
-    // "nix.serverSettings": {
-    //   "nil": {
-    //     "formatting": { "command": ["nixpkgs-fmt"] }
-    //   }
-    // }
+    "nix.serverPath": "nil",
+    "nix.serverSettings": {
+      "nil": {
+        "formatting": { "command": ["alejandra"] }
+      }
+    },
+    "[nix]": {
+      "editor.defaultFormatter": "kamadorueda.alejandra",
+      "editor.formatOnSave": true,
+      "editor.formatOnPaste": true,
+      "editor.formatOnType": false
+    },
+    "alejandra.program": "alejandra"
+
 }
