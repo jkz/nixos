@@ -1,7 +1,8 @@
-{ pkgs, jkz-lib, ... }:
+{ pkgs, ... }:
 {
-  imports = jkz-lib.import-modules "@home" [
-    ./vscode.nix
+  imports = [
+    (import ./vscode)."@home"
+    (import ./example)."@home"
   ];
 
   home.stateVersion = "23.11";
