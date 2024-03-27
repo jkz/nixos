@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    (import ./vscode)."@home"
+    ./vscode
     (import ./example)."@home"
   ];
 
