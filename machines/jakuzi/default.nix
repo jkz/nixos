@@ -1,6 +1,4 @@
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   networking.hostName = "jakuzi";
 
   imports = [
@@ -13,7 +11,7 @@
     defaultUser = "jkz";
     extraBin = with pkgs; [
       # Present the nil binary to vscode
-      { src = "${nil}/bin/nil"; }
+      {src = "${nil}/bin/nil";}
     ];
   };
 

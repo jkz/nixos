@@ -1,3 +1,3 @@
 {
-  import-modules = (import ./import-modules.nix);
+  import-modules = import ./import-modules.nix;
 }

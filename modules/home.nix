@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   imports = [
     ./vscode
     (import ./example)."@home"
@@ -43,7 +42,7 @@
     userName = "jkz";
     userEmail = "j.k.zwaan@gmail.com";
     extraConfig = {
-      push = { autoSetupRemote = true; };
+      push = {autoSetupRemote = true;};
     };
     aliases = {
       amend = "commit --amend --no-edit";

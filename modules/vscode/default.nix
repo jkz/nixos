@@ -1,21 +1,23 @@
-{ flake-inputs, pkgs, ...}:
-let
+{
+  flake-inputs,
+  pkgs,
+  ...
+}: let
   inherit (pkgs) buildEnv vscode-extensions vscode-utils writeTextFile;
 
   vscodeExtensions = with vscode-extensions; [
-    bbenoist.nix
     vscodevim.vim
-    jnoortheen.nix-ide
 
-    eamodio.gitlens
+    jnoortheen.nix-ide
+    kamadorueda.alejandra
+
+    github.copilot
+    github.copilot-chat
 
     ms-python.python
     ms-python.vscode-pylance
-    # ms-python.debugpy
 
-    # ms-vscode-remote.remote-wsl
-    github.copilot
-    github.copilot-chat
+    eamodio.gitlens
   ];
 
   extensionJsonFile = writeTextFile {
@@ -26,7 +28,7 @@ let
 
   combinedExtensionsDrv = buildEnv {
     name = "vscode-extensions";
-    paths = vscodeExtensions ++ [ extensionJsonFile ];
+    paths = vscodeExtensions ++ [extensionJsonFile];
   };
 in {
   imports = [
@@ -36,7 +38,7 @@ in {
   # TODO explain why we need nix-ld
 
   # Following instructions from https://nixos.wiki/wiki/Visual_Studio_Code
-  services.vscode-server.enable = true; 
+  services.vscode-server.enable = true;
 
   home.file = {
     ".vscode-server/data/Machine/settings.json".source = ./settings.json;
