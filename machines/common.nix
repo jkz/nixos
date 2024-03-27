@@ -1,9 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, flake-inputs, ... }:
 {
   environment.systemPackages = with pkgs; [
     comma
     nix-index
     wget
+    flake-inputs.alejandra.defaultPackage.${system}
   ];
 
   nix.settings.experimental-features = [
