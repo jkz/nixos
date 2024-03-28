@@ -35,6 +35,7 @@
     shellAliases = {
       conf = "sudo vim /etc/nixos";
       osre = "sudo nixos-rebuild switch --impure";
+      lg = "lazygit";
     };
   };
 
