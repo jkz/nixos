@@ -3,6 +3,7 @@
 
   imports = [
     ../common.nix
+    (import ../../modules/1password)."@nixos"
     (import ../../modules/example)."@nixos"
   ];
 

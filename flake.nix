@@ -19,6 +19,8 @@
     vscode-remote-wsl.flake = false;
     nixos-vscode-server.url = "github:nix-community/nixos-vscode-server";
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
+
+    _1password-shell-plugins.url = "github:1Password/shell-plugins";
   };
 
   outputs = {
@@ -63,6 +65,8 @@
                   "vscode-extension-github-copilot"
                   "vscode-extension-github-copilot-chat"
                   "vscode-extension-MS-python-vscode-pylance"
+                  "1password"
+                  "1password-cli"
                 ];
             })
           ];

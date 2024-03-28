@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./vscode
+    (import ./1password)."@home"
     (import ./example)."@home"
   ];
 
