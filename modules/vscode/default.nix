@@ -16,6 +16,7 @@
 
     ms-python.python
     ms-python.vscode-pylance
+    ms-python.black-formatter
 
     eamodio.gitlens
   ];
@@ -42,6 +43,7 @@ in {
 
   home.file = {
     ".vscode-server/data/Machine/settings.json".source = ./settings.json;
+    ".vscode-server/data/Machine/keybindings.json".source = ./keybindings.json;
 
     # This is a slightly hacky fix to make a file available that vscode needs to connect remotely
     ".vscode-server/server-env-setup".source = "${flake-inputs.vscode-remote-wsl}/server-env-setup";

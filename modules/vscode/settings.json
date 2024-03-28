@@ -20,6 +20,13 @@
       "editor.formatOnPaste": true,
       "editor.formatOnType": false
     },
-    "alejandra.program": "alejandra"
+    "alejandra.program": "alejandra",
 
+    "[python]": {
+      "editor.defaultFormatter": "ms-python.black-formatter",
+      "editor.formatOnSave": true,
+      "editor.formatOnPaste": true,
+      "editor.formatOnType": false
+    },
+    "black-formatter.importStrategy": "fromEnvironment"
 }
