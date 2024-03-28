@@ -2,8 +2,10 @@
   description = "jkz's NixOS config";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    # Using nixpkgs-unstable over nixos-unstable because of an issue with the aws package that hadn't landed in nixos-unstable yet
+    # TBD What we want to use in the future
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
