@@ -8,6 +8,7 @@
     home-manager.url = "home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     org-llm.url = "github:hraban/org-llm";
+    _1password-shell-plugins.url = "github:1Password/shell-plugins";
   };
 
   outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager, ... }:
@@ -52,14 +53,8 @@
         screencapture.location = "~/Pictures/screenshots";
         screensaver.askForPasswordDelay = 10;
       };
+
       imports = [ inputs._1password-shell-plugins.hmModules.default ];
-    programs._1password-shell-plugins = {
-      # enable 1Password shell plugins for bash, zsh, and fish shell
-      enable = true;
-      # the specified packages as well as 1Password CLI will be
-      # automatically installed and configured to use shell plugins
-      plugins = with pkgs; [ gh awscli2 cachix ];
-    };
 
       home-manager = {
         useGlobalPkgs = true;
@@ -67,10 +62,15 @@
         extraSpecialArgs = { flake-inputs = inputs; };
         sharedModules = [
           ({ pkgs, lib, config, flake-inputs, ...}: {
-            home.packages = [
-              pkgs._1password
-            ];
             programs = {
+              _1password-shell-plugins = {
+                # enable 1Password shell plugins for bash, zsh, and fish shell
+                enable = true;
+                # the specified packages as well as 1Password CLI will be
+                # automatically installed and configured to use shell plugins
+                plugins = with pkgs; [ gh awscli2 ];
+              };
+
               emacs = {
                 enable = true;
                 extraPackages = e: let
@@ -81,6 +81,9 @@
               };
             };
             home.stateVersion = "24.05";
+            home.packages = with pkgs; [
+              _1password
+            ];
           })
         ];
         users.jkz = { imports = [ ]; };

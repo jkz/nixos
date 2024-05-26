@@ -23,6 +23,10 @@
     nix-vscode-extensions.url = "github:nix-community/nix-vscode-extensions";
 
     _1password-shell-plugins.url = "github:1Password/shell-plugins";
+
+    # Darwin
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -31,8 +35,20 @@
     nixos-wsl,
     nixos-vscode-server,
     alejandra,
+    nix-darwin,
     ...
   } @ inputs: {
+    darwinConfigurations = {
+      jkz-mbp = nix-darwin.lib.darwinSystem {
+        modules = [
+          ./machines/jkz-mbp
+          home-manager.darwinModules.home-manager
+        ];
+      };
+
+      # Expose the package set, including overlays, for convenience.
+      # darwinPackages = self.darwinConfigurations."jkz-mbp".pkgs;
+    };
     nixosConfigurations = {
       jakuzi =
         nixpkgs.lib.nixosSystem

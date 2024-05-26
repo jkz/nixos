@@ -3,6 +3,7 @@
     ./vscode
     (import ./1password)."@home"
     (import ./example)."@home"
+    (import ./git)."@home"
   ];
 
   home.stateVersion = "23.11";
@@ -15,8 +16,6 @@
 
     which
     tree
-
-    lazygit
   ];
 
   programs.home-manager.enable = true;
@@ -36,29 +35,6 @@
       conf = "sudo vim /etc/nixos";
       osre = "sudo nixos-rebuild switch --impure";
       lg = "lazygit";
-    };
-  };
-
-  programs.git = {
-    enable = true;
-    userName = "jkz";
-    userEmail = "j.k.zwaan@gmail.com";
-    extraConfig = {
-      push = {autoSetupRemote = true;};
-    };
-    aliases = {
-      amend = "commit --amend --no-edit";
-      pfl = "push --force-with-lease";
-      tree = "log --graph --oneline --all";
-    };
-  };
-
-  programs.gh = {
-    enable = true;
-    gitCredentialHelper.enable = true;
-    settings = {
-      git_protocol = "ssh";
-      prompt = "enabled";
     };
   };
 
