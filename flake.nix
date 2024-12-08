@@ -27,9 +27,13 @@
     # Darwin
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Hraban stuff
+    org-llm.url = "github:hraban/org-llm";
   };
 
   outputs = {
+    self,
     nixpkgs,
     home-manager,
     nixos-wsl,
@@ -43,11 +47,19 @@
         modules = [
           ./machines/jkz-mbp
           home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              flake-inputs = inputs;
+            };
+            home-manager.users.jkz = import ./modules/home.nix;
+          }
         ];
       };
 
       # Expose the package set, including overlays, for convenience.
-      # darwinPackages = self.darwinConfigurations."jkz-mbp".pkgs;
+      darwinPackages = self.darwinConfigurations."jkz-mbp".pkgs;
     };
     nixosConfigurations = {
       jakuzi =

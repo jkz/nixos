@@ -1,7 +1,6 @@
 {
   "@home" = {
     config,
-    flake-inputs,
     pkgs,
     lib,
     ...
@@ -21,6 +20,8 @@
        amend = "commit --amend --no-edit";
        pfl = "push --force-with-lease";
        tree = "log --graph --oneline --all";
+       line = "log --oneline";
+       s = "status";
       };
       ignores = lib.splitString "\n" (builtins.readFile ./.gitignore_global);
     };

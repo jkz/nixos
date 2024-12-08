@@ -1,4 +1,9 @@
 {
+  "@darwin" = {pkgs, ...}: {
+    environment.systemPackages = with pkgs; [
+      _1password
+    ];
+  };
   "@nixos" = {...}: {
     programs._1password.enable = true;
   };
@@ -25,7 +30,7 @@
       extraConfig = ''
         Host *
             IdentitiesOnly=yes
-            IdentityAgent ~/.1password/agent.sock";
+            IdentityAgent ~/.1password/agent.sock;
       '';
     };
   };

@@ -2,7 +2,7 @@
   networking.hostName = "jakuzi";
 
   imports = [
-    ../common.nix
+    (import ../common.nix)."@nixos"
     (import ../../modules/1password)."@nixos"
     (import ../../modules/example)."@nixos"
   ];

@@ -1,9 +1,9 @@
-{ pkgs, ... }: {
+{ self, pkgs, ... }: {
   nixpkgs.config.allowUnfree = true;
 
   imports = [
-    ../common.nix
-    (import ../../modules/1password)."@nixos"
+    (import ../common.nix)."@darwin"
+    (import ../../modules/1password)."@darwin"
   ];
 
   # List packages installed in system profile. To search by name, run:
@@ -17,14 +17,17 @@
   # nix.package = pkgs.nix;
 
   # Necessary for using flakes on this system.
-  nix.settings.experimental-features = "nix-command flakes";
+  # nix.settings.experimental-features = "nix-command flakes";
+  #ALREADY DEFINED ELSEWHERE
 
   # Create /etc/zshrc that loads the nix-darwin environment.
   programs.zsh.enable = true;  # default shell on catalina
   # programs.fish.enable = true;
 
   # Set Git commit hash for darwin-version.
-  system.configurationRevision = self.rev or self.dirtyRev or null;
+  # system.configurationRevision = self.rev or self.dirtyRev or null;
+  system.configurationRevision = null;
+  #NO REFERENCE TO SELF
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
@@ -42,5 +45,18 @@
     finder.FXPreferredViewStyle = "clmv";
     screencapture.location = "~/Pictures/screenshots";
     screensaver.askForPasswordDelay = 10;
+  };
+
+  users = {
+    users = {
+      jkz = {
+        name = "jkz";
+        home = "/Users/jkz";
+        # shell = pkgs.zsh;
+        shell = pkgs.bash;
+        uid = 501;
+      };
+    };
+    knownUsers = [ "jkz" ];
   };
 }

@@ -363,6 +363,21 @@
         "type": "github"
       }
     },
+    "org-llm": {
+      "locked": {
+        "lastModified": 1714324036,
+        "narHash": "sha256-AlkdKFgbhuOW/iwDX7Ip6SNqNqYNAjjZPlhFg9GhPyA=",
+        "owner": "hraban",
+        "repo": "org-llm",
+        "rev": "c1bd871a63a9b7c82e1d7418f6312a4409faa0a2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hraban",
+        "repo": "org-llm",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "_1password-shell-plugins": "_1password-shell-plugins",
@@ -374,6 +389,7 @@
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_4",
         "nixpkgs-unstable": "nixpkgs-unstable",
+        "org-llm": "org-llm",
         "vscode-remote-wsl": "vscode-remote-wsl"
       }
     },

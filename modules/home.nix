@@ -2,6 +2,7 @@
   imports = [
     ./vscode
     (import ./1password)."@home"
+    (import ./emacs)."@home"
     (import ./example)."@home"
     (import ./git)."@home"
   ];
