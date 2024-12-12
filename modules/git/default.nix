@@ -15,6 +15,13 @@
       userEmail = "j.k.zwaan@gmail.com";
       extraConfig = {
         push = {autoSetupRemote = true;};
+        sendmail = {
+          enable = true;
+          smtpServer = "smtp.gmail.com";
+          smtpUser = "j.k.zwaan@gmail.com";
+          smtpServerPort = 587;
+          smtpEncryption = "tls";
+        };
       };
       aliases = {
        amend = "commit --amend --no-edit";
