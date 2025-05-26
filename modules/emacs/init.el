@@ -298,6 +298,11 @@
 (use-package svelte-mode
   :ensure t)
 
+;; LLMs! One thing that makes vscode sticky is its excellent copilot experience.
+(use-package copilot
+  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("*.el"))
+  :ensure t)
+
 ;; And now the keybindings
 
 ;; (define-key evil-normal-state-map (kbd "<left>") nil)

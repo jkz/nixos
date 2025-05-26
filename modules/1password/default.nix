@@ -1,11 +1,13 @@
 {
   "@darwin" = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
-      _1password
+      _1password-cli
+      _1password-gui
     ];
   };
   "@nixos" = {...}: {
-    programs._1password.enable = true;
+    programs._1password-cli.enable = true;
+    programs._1password-gui.enable = true;
   };
   "@home" = {
     pkgs,

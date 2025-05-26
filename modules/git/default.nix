@@ -14,8 +14,9 @@
       userName = "jkz";
       userEmail = "j.k.zwaan@gmail.com";
       extraConfig = {
+        rerere = { enable = true; };
         push = {autoSetupRemote = true;};
-        sendmail = {
+        sendemail = {
           enable = true;
           smtpServer = "smtp.gmail.com";
           smtpUser = "j.k.zwaan@gmail.com";

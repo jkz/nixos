@@ -1,5 +1,8 @@
 # -*- mode: gitignore; -*-
 
+# Personal conventions
+.local
+
 # Emacs
 # https://github.com/github/gitignore/blob/main/Global/Emacs.gitignore
 *~
